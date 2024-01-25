@@ -26,11 +26,16 @@ namespace WinFormsApp1
             int size_Width = pictureBox1.Size.Width;
             int size_Height = pictureBox1.Size.Height; // 사진의 크기값들을 불러옵니다.
 
+            int X_point = pictureBox1.Location.X;  // 위치 조정을 위해 사진의 위치값을 받습니다.
+            int Y_point = pictureBox1.Location.Y;
+
 
             Size tosize = new Size(size_Height + (int)size, size_Width + (int)size); // 사진의 크기값에 계산값을 더합니다.
-            pictureBox1.Size = tosize; // 사진에 위 계산값의 위치값을 부여합니다.
+            Point topoint = new Point(X_point - (int)(size / 1.75), Y_point - (int)(size / 1.75)); // 위치값을 계산하여 조정합니다.
 
-            value1.Text = size.ToString();
+            pictureBox1.Size = tosize; // 사진에 위 계산값의 위치값을 부여해 조정합니다.
+            pictureBox1.Location = topoint;
+            value1.Text = string.Format("{0:0.###0}", size);
         }
 
         private void button1_Click(object sender, EventArgs e)
